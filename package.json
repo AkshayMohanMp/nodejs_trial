@@ -1,0 +1,23 @@
+{
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkshayMohanMp/nodejs_trial.git"
+  },
+  "author": "akshay mohan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkshayMohanMp/nodejs_trial/issues"
+  },
+  "homepage": "https://github.com/AkshayMohanMp/nodejs_trial#readme",
+  "dependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
