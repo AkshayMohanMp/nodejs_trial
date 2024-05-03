@@ -12,3 +12,18 @@
     >>   npm run akshay
    >> npm i nodemon (install nodemon for update the program repeatedly)  run - npm run dev
 
+
+
+## HTTP Method
+
+>> GET : Getting Data
+>> POST : Sending the data to the server
+>>DELETE : Delete 
+>>PATCH : updating certain field
+>>PUT : Full updating the data
+
+
+
+>> Post Man
+>> Thuder Client
+>> Insomania
