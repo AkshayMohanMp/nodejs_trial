@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/AkshayMohanMp/nodejs_trial#readme",
   "dependencies": {
+    "express": "^4.19.2",
     "nodemon": "^3.1.0"
   }
 }

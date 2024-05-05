@@ -1,46 +1,63 @@
-const http = require("http"); // pakage import
+// Importing Express
+const express = require("express");
 
 
-const port = 8081; // port num
-
-const toDoList =["Akshay","ashak","aiswarya"];
-
-http.createServer((request, response)=>{
-    const {method, url}= request;
-    // console.log(method, url)
-
-    if(url === "/todos"){
-        if(method === "GET"){
-            response.writeHead(200);
-            response.write(toDoList.toString())
-        }else if(method =="POST"){
-            let body ="";
-            request.on('error',(err)=>{
-                console.log(err);
-            }).on('data',(chunk)=>{
-                body +=chunk
-                console.log("chunk:",chunk)
-            }).on('end',()=>{
-                body =JSON.parse(body)
-                console.log("body:",body)
-            })
-        }
-        else{
-            response.writeHead(501)
-        }
-
-    }else if(url === "/"){
-    }
-    // response.writeHead(200, {"Content-Type":"text/html"});
-    // response.write("<h1>Hello World!- hi</h1>");
+// intialisation 
+const app = express();
 
 
-    response.end();
+// Application will gone use only json format data
+app.use(express.json());
 
-})
-.listen(port, ()=>{
-    console.log(`NodeJS server is op and running successfully on port ${port}`)
+//  port No
+const port =8081
+
+
+// Array
+const toDoList =["Akshay","ashak","aaaa","aiswarya"];
+
+
+// api
+
+app.get("/todos",(req,res) =>{
+    // response status
+    res.status(200).send(toDoList);
 })
 
+app.post("/todos",(req,res) =>{
+    let newTodo =req.body.item;
+    toDoList.push(newTodo);
+    res.status(201).send({
+        message : "Data added:"
+    })
+})
 
-// http://localhost:8081
+app.delete("/todos",(req,res) =>{
+    const itemToDelete =req.body.item;
+
+
+
+    toDoList.find((elem, i) => {
+        if(elem == itemToDelete){
+            toDoList.splice(i,1);
+        }
+       
+    })
+    res.status(204).send({
+        message: "Deleted Succesfull"
+    })
+
+
+})
+
+app.all("/todos",(req,res) =>{
+    res.status(501).send();
+})
+
+app.all("*",(req,res) =>{
+    res.status(404).send();
+})
+
+app.listen(port, () => {
+    console.log("express server application is succesfully running on the port", port);
+}) 
